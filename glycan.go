@@ -7,11 +7,11 @@ import (
 	"strconv"
 )
 
-// I'm told these are constant
+// Component weights in daltons
 const (
-	FWeight = 146
-	MWeight = 162
-	NWeight = 203
+	FWeight = 146 // Fucose
+	MWeight = 162 // Mannose
+	NWeight = 203 // N-acetyl glucosamine
 )
 
 const usage = `
@@ -48,8 +48,8 @@ func main() {
 	for bracketOffset := bracketMargin * -1; bracketOffset <= bracketMargin; bracketOffset++ {
 		testWeight := totalWeight + bracketOffset
 		fmt.Printf("Input Value: %d (Adjusted by %+d):\n", testWeight, bracketOffset)
-		fmt.Printf("F\tM\tN\n")
-		fmt.Printf("---\t---\t---\n")
+		fmt.Printf("Fucose\tMannose\tNAG\n")
+		fmt.Printf("------\t-------\t---\n")
 
 		// FWeight is the smallest of the three, so we can fit the most of it in one testWeight
 		maxIterations := int(math.Ceil(float64(testWeight) / FWeight))
